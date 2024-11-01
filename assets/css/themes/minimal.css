@@ -1,0 +1,71 @@
+/* line 1, assets/scss/themes/minimal.scss */
+.ReactTable {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* line 5, assets/scss/themes/minimal.scss */
+.ReactTable .rt-thead.-headerGroups {
+  background: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* line 10, assets/scss/themes/minimal.scss */
+.ReactTable .rt-thead.-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* line 15, assets/scss/themes/minimal.scss */
+.ReactTable .rt-th {
+  font-weight: bold;
+}
+
+/* line 19, assets/scss/themes/minimal.scss */
+.ReactTable .rt-th,
+.ReactTable .rt-td {
+  padding: 5px 5px;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 0 0 0 transparent;
+}
+
+/* line 25, assets/scss/themes/minimal.scss */
+.ReactTable .rt-th.-sort-asc,
+.ReactTable .rt-td.-sort-asc {
+  box-shadow: inset 0 3px 0 0 rgba(0, 0, 0, 0.6);
+}
+
+/* line 29, assets/scss/themes/minimal.scss */
+.ReactTable .rt-th.-sort-desc,
+.ReactTable .rt-td.-sort-desc {
+  box-shadow: inset 0 -3px 0 0 rgba(0, 0, 0, 0.6);
+}
+
+/* line 35, assets/scss/themes/minimal.scss */
+.ReactTable .rt-tbody .rt-tr-group {
+  border-bottom: solid 1px rgba(0, 0, 0, 0.05);
+}
+
+/* line 39, assets/scss/themes/minimal.scss */
+.ReactTable .rt-tbody .rt-td {
+  border-right: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+/* line 44, assets/scss/themes/minimal.scss */
+.ReactTable .-pagination {
+  padding: 3px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* line 50, assets/scss/themes/minimal.scss */
+.wppt-header {
+  padding: 5px 0;
+}
+
+/* line 53, assets/scss/themes/minimal.scss */
+.wppt-header .wppt-search {
+  padding: 5px;
+}
+
+/* line 60, assets/scss/themes/minimal.scss */
+.wppt.striped .rt-tr.-odd {
+  background: rgba(0, 0, 0, 0.03);
+}

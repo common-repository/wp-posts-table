@@ -1,0 +1,27 @@
+{
+	"name": "wp-posts-table",
+	"version": "1.0.1",
+	"author": "Press Cargo",
+	"description": "WP Posts Table",
+	"browserslist": [
+		"defaults",
+		"not IE 11",
+		"not IE_Mob 11"
+	],
+	"devDependencies": {
+		"browser-sync": "^2.26.3",
+		"gulp": "^3.9.1",
+		"gulp-autoprefixer": "^7.0.0",
+		"gulp-clean-css": "^4.2.0",
+		"gulp-concat": "^2.6.0",
+		"gulp-header": "^2.0.0",
+		"gulp-notify": "^3.2.0",
+		"gulp-rename": "^2.0.0",
+		"gulp-replace": "1.0.0",
+		"gulp-sass": "^4.0.2",
+		"gulp-sourcemaps": "^2.6.0",
+		"gulp-uglify": "^2.0.0",
+		"gulp-zip": "^5.0.0",
+		"minimist": "1.2.0"
+	}
+}

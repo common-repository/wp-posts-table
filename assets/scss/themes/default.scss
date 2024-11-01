@@ -1,0 +1,218 @@
+@import "../variables";
+@import "../mixins";
+
+$padding: 10px;
+
+@font-face {
+	font-family: 'wppt';
+	src: url('../../fonts/wppt.eot?86227420');
+	src: url('../../fonts/wppt.eot?86227420#iefix') format('embedded-opentype'),
+	   url('../../fonts/wppt.woff2?86227420') format('woff2'),
+	   url('../../fonts/wppt.woff?86227420') format('woff'),
+	   url('../../fonts/wppt.ttf?86227420') format('truetype'),
+	   url('../../fonts/wppt.svg?86227420#wppt') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@mixin wppt-icon() {
+	font-family: "wppt";
+	font-style: normal;
+	font-weight: normal;
+	speak: none;
+
+	display: inline-block;
+	text-decoration: inherit;
+	width: 1em;
+	margin-right: .2em;
+	text-align: center;
+	/* opacity: .8; */
+
+	/* For safety - reset parent styles, that can break glyph codes*/
+	font-variant: normal;
+	text-transform: none;
+
+	/* fix buttons height, for twitter bootstrap */
+	line-height: 1em;
+
+	/* Animation center compensation - margins should be symmetric */
+	/* remove if not needed */
+	margin-left: .2em;
+
+	/* you can be more comfortable with increased icons size */
+	/* font-size: 120%; */
+
+	/* Font smoothing. That was taken from TWBS */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	/* Uncomment for 3D effect */
+	/* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.ReactTable {
+	//border: 1px solid rgba(0,0,0,0.1);
+
+	.rt-thead {
+		&.-headerGroups {
+			background: rgba(0,0,0,0.03);
+			border-bottom: 1px solid rgba(0,0,0,0.05);
+		}
+
+		&.-header {
+			border-bottom: 1px solid rgba(0,0,0,0.05);
+		}
+	}
+
+	.rt-table {
+		border-bottom: 1px solid rgba(0,0,0,0.05);
+	}
+
+	.rt-th {
+		font-weight: bold;
+		font-size: 12px;
+		text-transform: uppercase;
+		background: #F4F8F9;
+
+		.rt-resizable-header-content {
+			display: flex;
+			align-items: center;
+			overflow: visible;
+
+			&:after {
+				margin: 2px 5px 0 5px;
+				content: '';
+			}
+		}
+	}
+
+	.rt-th,
+	.rt-td {
+		padding: $padding;
+		line-height: 1.3;
+		box-shadow: inset 0 0 0 0 transparent;
+
+		&.-sort-asc {
+			.rt-resizable-header-content {
+				&:after {
+					@include arrow(down, 4px, black);
+				}
+			}
+		}
+
+		&.-sort-desc {
+			.rt-resizable-header-content {
+				&:after {
+					@include arrow(up, 4px, black);
+				}
+			}
+		}
+	}
+
+	.rt-tbody {
+		.rt-tr-group {
+			border-bottom: solid 1px rgba(0,0,0,0.05);
+		}
+	}
+
+	.pagination-bottom {
+		padding-top: 10px;
+		text-align: center;
+	}
+
+	.-pagination {
+		display: flex;
+		margin: 0 auto;
+		padding: 3px;
+		max-width: 800px;
+
+		.-btn {
+			background: none;
+			border: 1px solid #CCC;
+			color: #333;
+			font-size: 12px;
+
+			&[disabled] {
+				opacity: 1;
+				color: #CCC;
+
+				&:hover {
+					background: none;
+				}
+			}
+
+			&:hover {
+				background: #F4F8F9;
+			}
+		}
+
+		.-center {
+			border-top: 1px solid #CCC;
+			border-bottom: 1px solid #CCC;
+
+			.-pageInfo {
+				margin: 0;
+				font-size: 12px;
+
+				input {
+					padding: 5px;
+					width: 50px;
+					font-size: 12px;
+				}
+			}
+		}
+
+		.-previous {
+			.-btn {
+				border-top-right-radius: 0;
+				border-top-left-radius: 5px;
+				border-bottom-right-radius: 0;
+				border-bottom-left-radius: 5px; 
+
+				&:before {
+					@include wppt-icon;
+					content: '\e801';
+				}
+			}
+		}
+
+		.-next {
+			.-btn {
+				border-top-right-radius: 5px;
+				border-top-left-radius: 0;
+				border-bottom-right-radius: 5px;
+				border-bottom-left-radius: 0; 
+
+				&:after {
+					@include wppt-icon;
+					content: '\e800';
+				}
+			}
+		}
+	}
+}
+
+.wppt {
+	// need flex for collapsed column
+	.rt-th > div {
+		width: 24px;
+	}
+
+	&.foldable {
+		.rt-th {
+			border-right: 1px solid #CCC;
+		}
+	}
+
+	&.striped {
+		.rt-tr.-even {
+			background: #F4F8F9;
+		}
+	}
+}
+
+.wppt-header {
+	.wppt-search {
+		padding: 5px;
+	}
+}

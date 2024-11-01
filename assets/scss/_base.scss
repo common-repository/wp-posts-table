@@ -1,0 +1,401 @@
+.ReactTable {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+
+	* {
+		box-sizing: border-box;
+	}
+	
+	.rt-table {
+		flex: auto 1;
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		width: 100%;
+		border-collapse: collapse;
+		overflow: auto;
+	}
+
+	.rt-thead {
+		flex: 1 0 auto;
+		display: flex;
+		flex-direction: column;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+
+		.rt-th,
+		.rt-td {
+			line-height: normal;
+			position: relative;
+			transition: box-shadow .3s $easeOutBack;
+
+			&.-cursor-pointer{
+				cursor: pointer;
+			}
+
+			&:last-child {
+				border-right: 0;
+			}
+		}
+
+		.rt-th:focus {
+			outline: none;
+		}
+
+		.rt-resizable-header {
+			overflow: visible;
+
+			&:last-child {
+				overflow: hidden;
+			}
+		}
+
+		.rt-resizable-header-content {
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		.rt-header-pivot:after,
+		.rt-header-pivot:before {
+			left: 100%;
+			top: 50%;
+			border: solid transparent;
+			content: "";
+			height: 0;
+			width: 0;
+			position: absolute;
+			pointer-events: none;
+		}
+
+		.rt-header-pivot:after {
+			border-width: 8px;
+			margin-top: -8px;
+		}
+
+		.rt-header-pivot:before {
+			border-width: 10px;
+			margin-top: -10px;
+		}
+
+		.rt-fold-button {
+			display: flex;
+			flex: 0 0 auto;
+			cursor: pointer;
+		}
+
+		.rt-fold-icon {
+			display: flex;
+			flex: 0 0 24px;
+			justify-content: center;
+			align-items: center;
+
+			> div {
+				width: 24px;
+			}
+
+			.fold-collapse {
+				@include arrow(left, 4px, black);
+				margin: 0 auto;
+			}
+
+			.fold-expand {
+				@include arrow(right, 4px, black);
+				margin: 0 auto;
+			}
+		}
+	}
+
+	.rt-tbody {
+		flex: 99999 1 auto;
+		display: flex;
+		flex-direction: column;
+		overflow: auto;
+
+		.rt-tr-group {
+			&:last-child {
+				border-bottom: 0;
+			}
+		}
+
+		.rt-td {
+			&:last-child {
+				border-right: 0;
+			}
+		}
+
+		.rt-expandable {
+			cursor: pointer;
+			text-overflow: clip;
+		}
+	}
+
+	.rt-tr-group {
+		flex: 1 0 auto;
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.rt-tr {
+		flex: 1 0 auto;
+		display: inline-flex;
+	}
+
+	.rt-th,
+	.rt-td {
+		flex: 1 0 0;
+		text-overflow: ellipsis;
+		padding: 7px 5px;
+		overflow: hidden;
+		transition: .3s ease;
+		transition-property: width, min-width, padding, opacity;
+
+		&.-hidden {
+			width: 0 !important;
+			min-width: 0 !important;
+			padding: 0 !important;
+			border: 0 !important;
+			opacity: 0 !important;
+		}
+	}
+
+	.rt-expander {
+		display: inline-block;
+		position: relative;
+		margin: 0;
+		color: transparent;
+		margin: 0 10px;
+
+		&:after {
+			content: '';
+			position: absolute;
+			width: 0;
+			height: 0;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%) rotate(-90deg);
+			border-left: ($expandSize * .72) solid transparent;
+			border-right: ($expandSize * .72) solid transparent;
+			border-top: $expandSize solid rgba(0,0,0, .8);
+			transition: all .3s $easeOutBack;
+			cursor: pointer;
+		}
+
+		&.-open:after {
+			transform: translate(-50%, -50%) rotate(0deg);
+		}
+	}
+
+	.rt-resizer {
+		display: inline-block;
+		position: absolute;
+		width: 36px;
+		top: 0;
+		bottom: 0;
+		right: -18px;
+		cursor: col-resize;
+		z-index: 10;
+	}
+
+	.rt-tfoot {
+		flex: 1 0 auto;
+		display: flex;
+		flex-direction: column;
+
+		.rt-td {
+			&:last-child {
+				border-right: 0;
+			}
+		}
+	}
+
+	.-pagination {
+		z-index: 1;
+		display: flex;
+		justify-content: space-between;
+		align-items: stretch;
+		flex-wrap: wrap;
+		padding: 3px;
+
+		.-btn {
+			appearance: none;
+			display: block;
+			width: 100%;
+			height: 100%;
+			transition: all .1s ease;
+			cursor: pointer;
+			outline: none;
+
+			&[disabled] {
+				opacity: 0.5;
+				cursor: default;
+			}
+		}
+
+		.-previous,
+		.-next {
+			flex: 1;
+			text-align: center;
+		}
+
+		.-center {
+			flex: 1.5;
+			text-align: center;
+			margin-bottom: 0;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: space-around;
+		}
+
+		.-pageInfo {
+			display: inline-block;
+			margin: 3px 10px;
+			white-space: nowrap;
+		}
+
+		.-pageJump {
+			display: inline-block;
+
+			input {
+				width: 70px;
+				text-align:center;
+			}
+		}
+
+		.-pageSizeOptions {
+			margin: 3px 10px;
+		}
+	}
+
+	.rt-noData {
+		display: block;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		transition: all .3s ease;
+		z-index: 1;
+		pointer-events: none;
+	}
+
+	.-loading {
+		display: block;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		transition: all .3s ease;
+		z-index: -1;
+		opacity: 0;
+		pointer-events: none;
+
+		> div {
+			position: absolute;
+			display: block;
+			text-align:center;
+			width: 100%;
+			top: 50%;
+			left: 0;
+			transform: translateY(-52%);
+			transition: all .3s $easeOutQuad;
+		}
+
+		&.-active {
+			opacity: 1;
+			z-index: 2;
+			pointer-events: all;
+
+			> div {
+				transform: translateY(50%);
+			}
+		}
+	}
+
+	.rt-resizing {
+		.rt-th,
+		.rt-td {
+			transition: none !important;
+			cursor: col-resize;
+			user-select: none;
+		}
+	}
+
+	.highlight {
+		background-color: yellow;
+		color: black;
+	}
+}
+
+.wppt {
+	.rt-th:not(.rt-resizable-header) {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	// need flex for collapsed column
+	.rt-th > div {
+		display: flex;
+		height: 15px;
+	}
+
+	&.foldable-hidden {
+		.rt-fold-icon {
+			display: none;
+		}
+	}
+}
+
+.wppt-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+	padding: 5px 0;
+}
+
+.wppt-toolbar {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.wppt-page-size {
+	margin-right: 20px;
+}
+
+.wppt-tool {
+	display: inline-block;
+	margin: 0 8px;
+	padding: 0 8px;
+	font-size: 14px;
+	line-height: 29px;
+	height: 32px;
+	cursor: pointer;
+	text-indent: -501%;
+	overflow: hidden;
+
+	&.wppt-foldable-toggle {
+		&.foldable {
+			background: url(../images/collapse.svg) center center no-repeat;
+		}
+
+		&.not-foldable {
+			background: url(../images/expand.svg) center center no-repeat;
+		}
+	}
+
+	&.wppt-striped-toggle {
+		&.not-striped {
+			background: url(../images/striped.svg) center center no-repeat;
+		}
+
+		&.striped {
+			background: url(../images/not-striped.svg) center center no-repeat;
+		}
+	}
+}

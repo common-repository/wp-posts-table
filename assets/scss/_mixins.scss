@@ -1,0 +1,38 @@
+@mixin input-select-style() {
+	border: 1px solid rgba(0,0,0,0.1);
+	background: white;
+	padding: 5px 7px;
+	font-size: inherit;
+	border-radius: 3px;
+	font-weight: normal;
+	outline: none;
+}
+
+@mixin arrow($direction, $size, $color) {
+	width: 0; 
+	height: 0;
+
+	@if $direction == up {
+		border-left: $size solid transparent;
+		border-right: $size solid transparent;
+		border-bottom: $size solid $color;
+	}
+
+	@else if $direction == down {
+		border-left: $size solid transparent;
+		border-right: $size solid transparent;
+		border-top: $size solid $color;
+	}
+	
+	@else if $direction == left {
+		border-top: $size solid transparent;
+		border-bottom: $size solid transparent; 
+		border-right: $size solid $color;
+	}
+
+	@else {
+		border-top: $size solid transparent;
+		border-bottom: $size solid transparent;
+		border-left: $size solid $color;
+	}
+}
